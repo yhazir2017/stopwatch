@@ -28,9 +28,20 @@ class ViewController: UIViewController {
     
 
     @IBAction func start_Button_Tapped(_ sender: Any) {
+        
+        counter = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(self.update), userInfo: nil, repeats: true)
+    }
+    
+    func update(){
+       initialValue += 1
+        counterLabel.text = String(initialValue)
     }
     
     @IBAction func stopButtonTapped(_ sender: Any) {
+        counter.invalidate()
+        initialValue = 0
+        counterLabel.text = String(initialValue)
+        
     }
     
 
